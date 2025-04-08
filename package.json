@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "login-test": "npx cypress run  --spec 'cypress/e2e/spec.cy.js' --browser chrome"
+    "login-test": "npx cypress run  --spec 'cypress/e2e/login.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
