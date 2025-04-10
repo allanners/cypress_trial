@@ -133,7 +133,7 @@ describe("Parabank Registration with Fixtures and Faker", () => {
         cy.get(':nth-child(3) > b').should('be.visible');
         cy.get('input[type="submit"][value="Log In"]').should('be.visible').should('not.be.disabled');
 
-        cy.fixture('credentials.json').then((credentials) => {
+        cy.fixture('fakerData.json').then((credentials) => {
             cy.get(':nth-child(2) > .input').should('have.value', '').type(credentials.username);
             cy.get(':nth-child(4) > .input').should('have.value', '').type(credentials.password);
             cy.get('input[type="submit"][value="Log In"]').click();
