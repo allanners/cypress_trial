@@ -50,8 +50,12 @@ Cypress.Commands.add("checkout", () => {
 // Checkout Screenshot Command
 Cypress.Commands.add("takeScreen", (prefix) => {
     const date = new Date();
-    const formattedDate = `${String(date.getMonth()+1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}-${String(date.getFullYear()).slice(-2)}`;
-    const fileName = `${prefix}-${formattedDate}`;
+    const formattedDate = 
+        `${String(date.getMonth()+1). // Gets month today +1 since month starts with a 0
+        padStart(2, '0')}-${String(date.getDate()). // Pad month with 0s; get date
+        padStart(2, '0')}-${String(date.getFullYear()). // Pad date with 0s, get year
+        slice(-2)}`; // Retain only the last 2 digits of the year
+    const fileName = `${prefix}-${formattedDate}`; // Combine all of them
     cy.screenshot(fileName);
 });
   

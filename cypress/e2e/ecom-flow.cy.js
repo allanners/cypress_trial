@@ -1,11 +1,10 @@
 describe('E-commerce Workflow Suite.', () => {
   beforeEach(() => {
     cy.visit("https://www.saucedemo.com/",  {timeout: 240000});
-  })
+    cy.auth('standard_user', 'secret_sauce');
+  });
 
   it("Should Successfully Login", () => {
-    cy.auth('standard_user', 'secret_sauce');
-
     // Assert successful login by checking URL
     cy.url().should("include", "/inventory.html");
 
@@ -17,8 +16,6 @@ describe('E-commerce Workflow Suite.', () => {
   });
 
   it("Should Successfully Add to Cart", () => {
-    cy.auth('standard_user', 'secret_sauce');
-
     // Add item to cart
     cy.addToCart("Sauce Labs Backpack");
 
@@ -27,8 +24,6 @@ describe('E-commerce Workflow Suite.', () => {
   });
 
   it("Should Successfully Checkout", () => {
-    cy.auth('standard_user', 'secret_sauce');
-
     // Add item to cart
     cy.addToCart("Sauce Labs Backpack");
 
@@ -46,5 +41,5 @@ describe('E-commerce Workflow Suite.', () => {
     
     // Screenshot
     cy.takeScreen("checkout");
-  })
-})
+  });
+});
