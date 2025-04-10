@@ -65,3 +65,44 @@ Cypress.Commands.add("auth", (username, password) => {
     cy.get('[data-test="password"]').type(password);
     cy.get('[data-test="login-button"]').click();
 });
+
+Cypress.Commands.add("verifyRegistrationLabels", () => {
+    cy.get(':nth-child(1) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(2) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(3) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(4) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(5) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(6) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(7) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(8) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(10) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(11) > [align="right"] > b').should('be.visible');
+    cy.get(':nth-child(12) > [align="right"] > b').should('be.visible');
+    cy.get('input[type="submit"][value="Register"]').should('be.visible').should('not.be.disabled');
+});
+
+Cypress.Commands.add("inputRegistrationFields", (user) => {
+    cy.get('input[id="customer.firstName"]').should('have.value', '').type(user.firstName);
+    cy.get('input[id="customer.lastName"]').should('have.value', '').type(user.lastName);
+    cy.get('input[id="customer.address.street"]').should('have.value', '').type(user.addressStreet);
+    cy.get('input[id="customer.address.city"]').should('have.value', '').type(user.addressCity);
+    cy.get('input[id="customer.address.state"]').should('have.value', '').type(user.addressState);
+    cy.get('input[id="customer.address.zipCode"]').should('have.value', '').type(user.addressZipCode);
+    cy.get('input[id="customer.phoneNumber"]').should('have.value', '').type(user.phoneNumber);
+    cy.get('input[id="customer.ssn"]').should('have.value', '').type(user.ssn);
+    cy.get('input[id="customer.username"]').should('have.value', '').type(user.username);
+    cy.get('input[id="customer.password"]').should('have.value', '').type(user.password);
+    cy.get('input[id="repeatedPassword"]').should('have.value', '').type(user.password);
+});
+
+Cypress.Commands.add("writeDataToFile", (user) => {
+    cy.writeFile('cypress/fixtures/fakerData.json', user);
+});
+
+Cypress.Commands.add("clearDatabase", () => {
+    cy.get('.leftmenu > :nth-child(6) > a').should('be.visible').click();
+    cy.url().should('include', 'admin.htm');
+    cy.get('tr > :nth-child(2) > .button').should('be.visible').click();
+    cy.get(':nth-child(1) > .button').should('be.visible').click();
+    cy.visit('https://parabank.parasoft.com/parabank/index.htm');
+});
