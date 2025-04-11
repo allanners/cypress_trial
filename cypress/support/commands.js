@@ -101,9 +101,12 @@ Cypress.Commands.add("writeDataToFile", (user) => {
 
 Cypress.Commands.add("clearDatabase", () => {
     cy.get('.leftmenu > :nth-child(6) > a').should('be.visible').click();
+    cy.wait(2000);
     cy.url().should('include', 'admin.htm');
     cy.get('tr > :nth-child(2) > .button').should('be.visible').click();
+    cy.wait(2000);
     cy.get(':nth-child(1) > .button').should('be.visible').click();
+    cy.wait(2000);
     cy.visit('https://parabank.parasoft.com/parabank/index.htm');
-    cy.wait(1500);
+    cy.wait(2000);
 });

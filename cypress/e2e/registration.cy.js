@@ -10,7 +10,7 @@ describe("Parabank Registration with Fixtures", () => {
     it("Should Successfully Register a Customer", () => {
         // Reset Database
         cy.clearDatabase();
-
+        
         // Click on Register Link
         cy.get('#loginPanel > :nth-child(3) > a').should('be.visible').click();
         cy.wait(1500);
@@ -71,7 +71,6 @@ describe("Parabank Registration with Faker", () => {
 
         // Verify Registration Labels
         cy.verifyRegistrationLabels();
-        
 
         // Input fields
         cy.inputRegistrationFields(customer);
