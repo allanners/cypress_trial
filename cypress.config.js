@@ -7,7 +7,8 @@ module.exports = defineConfig({
   experimentalStudio: true,
   viewportWidth: 1920,
   viewportHeight: 1080,
-  // retries: 3,
+  retries: 3,
+  // testIsolation: false,
   // reporter: 'cypress -mochawesome-reporter',
   reporterOptions: {
     charts: true,

@@ -105,4 +105,5 @@ Cypress.Commands.add("clearDatabase", () => {
     cy.get('tr > :nth-child(2) > .button').should('be.visible').click();
     cy.get(':nth-child(1) > .button').should('be.visible').click();
     cy.visit('https://parabank.parasoft.com/parabank/index.htm');
+    cy.wait(1500);
 });

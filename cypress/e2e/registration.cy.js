@@ -13,6 +13,7 @@ describe("Parabank Registration with Fixtures", () => {
 
         // Click on Register Link
         cy.get('#loginPanel > :nth-child(3) > a').should('be.visible').click();
+        cy.wait(1500);
         
         // Assert link
         cy.url().should('include', 'register.htm');
@@ -25,6 +26,7 @@ describe("Parabank Registration with Fixtures", () => {
             cy.inputRegistrationFields(credentials);
             
             cy.get('input[type="submit"][value="Register"]').click();
+            cy.wait(1500);
             cy.contains(`Welcome ${credentials.username}`).should("be.visible");
         });
         
@@ -41,6 +43,7 @@ describe("Parabank Registration with Fixtures", () => {
             cy.get(':nth-child(2) > .input').should('have.value', '').type(credentials.username);
             cy.get(':nth-child(4) > .input').should('have.value', '').type(credentials.password);
             cy.get('input[type="submit"][value="Log In"]').click();
+            cy.wait(1500);
             cy.get('.smallText').contains(`Welcome ${credentials.firstName} ${credentials.lastName}`).should("be.visible");
         });   
 
@@ -61,6 +64,7 @@ describe("Parabank Registration with Faker", () => {
 
         // Click on Register Link
         cy.get('#loginPanel > :nth-child(3) > a').should('be.visible').click();
+        cy.wait(1500);
         
         // Assert link
         cy.url().should('include', 'register.htm');
@@ -73,6 +77,7 @@ describe("Parabank Registration with Faker", () => {
         cy.inputRegistrationFields(customer);
     
         cy.get('input[type="submit"][value="Register"]').should('not.be.disabled').click();
+        cy.wait(1500);
         cy.contains(`Welcome ${customer.username}`).should("be.visible");
     });
 
@@ -87,6 +92,7 @@ describe("Parabank Registration with Faker", () => {
         cy.get(':nth-child(2) > .input').should('have.value', '').type(customer.username);
         cy.get(':nth-child(4) > .input').should('have.value', '').type(customer.password);
         cy.get('input[type="submit"][value="Log In"]').click();
+        cy.wait(1500);
 
         cy.get('.smallText').contains(`Welcome ${customer.firstName} ${customer.lastName}`).should("be.visible");
     
@@ -106,6 +112,7 @@ describe("Parabank Registration with Fixtures and Faker", () => {
 
         // Click on Register Link
         cy.get('#loginPanel > :nth-child(3) > a').should('be.visible').click();
+        cy.wait(1500);
         
         // Assert link
         cy.url().should('include', 'register.htm');
@@ -121,6 +128,7 @@ describe("Parabank Registration with Fixtures and Faker", () => {
             cy.inputRegistrationFields(credentials);
             
             cy.get('input[type="submit"][value="Register"]').click();
+            cy.wait(1500);
             cy.contains(`Welcome ${credentials.username}`).should("be.visible");
         });
     
@@ -137,6 +145,7 @@ describe("Parabank Registration with Fixtures and Faker", () => {
             cy.get(':nth-child(2) > .input').should('have.value', '').type(credentials.username);
             cy.get(':nth-child(4) > .input').should('have.value', '').type(credentials.password);
             cy.get('input[type="submit"][value="Log In"]').click();
+            cy.wait(1500);
             cy.get('.smallText').contains(`Welcome ${credentials.firstName} ${credentials.lastName}`).should("be.visible");
         });   
     });
