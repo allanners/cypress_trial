@@ -172,11 +172,6 @@ Cypress.Commands.add('fillSignUpForm', () => {
         cy.get('[data-qa="years"]').select(userData.dateOfBirth.year)
             .should('have.value', userData.dateOfBirth.year);
 
-        // cy.get('[data-qa="months"]')
-        //     .select(userData.dateOfBirth.month) // Select "January"
-        //     .find('option:selected') // Find the currently selected option
-        //     .should('have.text', userData.dateOfBirth.month); // Assert the text is "January"
-
         cy.get('[data-qa="first_name"]').should('have.value', '').type(userData.firstName);
         cy.get('[data-qa="last_name"]').should('have.value', '').type(userData.lastName);
         cy.get('[data-qa="company"]').should('have.value', '').type(userData.company);
