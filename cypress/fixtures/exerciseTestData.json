@@ -1,0 +1,29 @@
+{
+  "title": "Mr.",
+  "name": "Zackary Greer Parker",
+  "email": "Zackary.Parker7@mail.com",
+  "password": "passw0rd",
+  "dateOfBirth": {
+    "day": "26",
+    "month": "June",
+    "year": "1981"
+  },
+  "address": "98209 Rachelle Wall",
+  "address2": "Glovercester, Malawi",
+  "newsLetter": "false",
+  "specialOffers": "true",
+  "firstName": "Zackary",
+  "lastName": "Parker",
+  "company": "Skiles Group",
+  "country": "Canada",
+  "state": "Georgia",
+  "city": "Stanleytown",
+  "zipcode": "31643",
+  "mobileNumber": "(605) 567-7726 x3573",
+  "cardNumber": "3528-6697-5468-7266",
+  "cvc": "918",
+  "cardExpiry": {
+    "month": 2,
+    "year": 2030
+  }
+}
