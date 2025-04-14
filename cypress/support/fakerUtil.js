@@ -33,7 +33,7 @@ export function generateUserData() {
     password: 'passw0rd',
     dateOfBirth: {
       day: dob.getDate().toString(),
-      month: dob.toLocaleString('default', { month: 'long' }),
+      month: dob.toLocaleString('default', { month: 'numeric' }),
       year: dob.getFullYear().toString()
     },
     address: faker.location.streetAddress(),

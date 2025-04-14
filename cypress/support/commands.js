@@ -160,9 +160,22 @@ Cypress.Commands.add('fillSignUpForm', () => {
         cy.get('[data-qa="password"]').should('have.value', '').type(userData.password);
         
         // Select Date of Birth
-        cy.get('[data-qa="days"]').select(userData.dateOfBirth.day);
-        cy.get('[data-qa="months"]').select(userData.dateOfBirth.month);
-        cy.get('[data-qa="years"]').select(userData.dateOfBirth.year);
+        cy.get('select[data-qa="days"] option:selected').should('have.text', 'Day');
+        cy.get('[data-qa="days"]').select(userData.dateOfBirth.day)
+            .should('have.value', userData.dateOfBirth.day);
+
+        cy.get('select[data-qa="months"] option:selected').should('have.text', 'Month');
+        cy.get('[data-qa="months"]').select(userData.dateOfBirth.month)
+            .should('have.value', userData.dateOfBirth.month);
+
+        cy.get('select[data-qa="years"] option:selected').should('have.text', 'Year');
+        cy.get('[data-qa="years"]').select(userData.dateOfBirth.year)
+            .should('have.value', userData.dateOfBirth.year);
+
+        // cy.get('[data-qa="months"]')
+        //     .select(userData.dateOfBirth.month) // Select "January"
+        //     .find('option:selected') // Find the currently selected option
+        //     .should('have.text', userData.dateOfBirth.month); // Assert the text is "January"
 
         cy.get('[data-qa="first_name"]').should('have.value', '').type(userData.firstName);
         cy.get('[data-qa="last_name"]').should('have.value', '').type(userData.lastName);

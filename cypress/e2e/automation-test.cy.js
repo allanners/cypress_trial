@@ -5,7 +5,7 @@ describe("Place Order Test Suite", () => {
         cy.generateUserData(); // Generate User Data
     });
 
-    it.skip("Place Order: Register While Checkout", () => {
+    it("Place Order: Register While Checkout", () => {
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
         cy.url().should('include', 'automationexercise.com');
@@ -42,7 +42,6 @@ describe("Place Order Test Suite", () => {
         cy.wait(1000);
 
         // 9. Fill all details in Signup and create account
-        cy.createAccount();
         cy.fillInitialSignUpForm();
         cy.fillSignUpForm();
 
@@ -103,7 +102,7 @@ describe("Place Order Test Suite", () => {
         cy.wait(1000);
     });
 
-    it.skip("Place Order: Register Before Checkout", () => {
+    it("Place Order: Register Before Checkout", () => {
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
         cy.url().should('include', 'automationexercise.com');
@@ -183,16 +182,15 @@ describe("Place Order Test Suite", () => {
         cy.wait(1000);
     });
 
-    before(() => {
+    it("Place Order: Login Before Checkout", () => {
+        // Prerequesite
         cy.visit('http://automationexercise.com');
         cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
         cy.fillInitialSignUpForm();
         cy.fillSignUpForm();
         cy.get('[data-qa="continue-button"]').should('not.be.disabled').and('be.visible').click();
         cy.get('.shop-menu > .nav > :nth-child(4) > a').should('contain', 'Logout').click();
-    });
 
-    it("Place Order: Login Before Checkout", () => {
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
         cy.url().should('include', 'automationexercise.com');
