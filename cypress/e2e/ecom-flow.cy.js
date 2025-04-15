@@ -12,15 +12,7 @@ describe('E-commerce Workflow Suite.', () => {
     cy.get(".shopping_cart_link").should("be.visible");
   
     // Screenshot
-    // cy.takeScreen("login");
-    const date = new Date();
-    const formattedDate = 
-        `${String(date.getMonth()+1). // Gets month today +1 since month starts with a 0
-        padStart(2, '0')}-${String(date.getDate()). // Pad month with 0s; get date
-        padStart(2, '0')}-${String(date.getFullYear()). // Pad date with 0s, get year
-        slice(-2)}`; // Retain only the last 2 digits of the year
-    const fileName = `${prefix}-${formattedDate}`; // Combine all of them
-    cy.screenshot(fileName);
+    cy.takeScreen("login");
   });
 
   it("Should Successfully Add to Cart", () => {
@@ -28,16 +20,8 @@ describe('E-commerce Workflow Suite.', () => {
     cy.addToCart("Sauce Labs Backpack");
 
     // Screenshot
-    // cy.takeScreen("add-to-cart");
+    cy.takeScreen("add-to-cart");
 
-    const date = new Date();
-    const formattedDate = 
-        `${String(date.getMonth()+1). // Gets month today +1 since month starts with a 0
-        padStart(2, '0')}-${String(date.getDate()). // Pad month with 0s; get date
-        padStart(2, '0')}-${String(date.getFullYear()). // Pad date with 0s, get year
-        slice(-2)}`; // Retain only the last 2 digits of the year
-    const fileName = `${prefix}-${formattedDate}`; // Combine all of them
-    cy.screenshot(fileName);
   });
 
   it("Should Successfully Checkout", () => {
@@ -57,14 +41,6 @@ describe('E-commerce Workflow Suite.', () => {
     .should("be.visible"); // Should be visible
     
     // Screenshot
-    // cy.takeScreen("checkout");
-    const date = new Date();
-    const formattedDate = 
-        `${String(date.getMonth()+1). // Gets month today +1 since month starts with a 0
-        padStart(2, '0')}-${String(date.getDate()). // Pad month with 0s; get date
-        padStart(2, '0')}-${String(date.getFullYear()). // Pad date with 0s, get year
-        slice(-2)}`; // Retain only the last 2 digits of the year
-    const fileName = `${prefix}-${formattedDate}`; // Combine all of them
-    cy.screenshot(fileName);
+    cy.takeScreen("checkout");
   });
 });
