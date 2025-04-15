@@ -1,29 +1,29 @@
 {
   "title": "Mr.",
-  "name": "Kendall Brooklyn Schumm",
-  "email": "Kendall.Schumm96@mail.com",
+  "name": "Sarina Sasha Roberts",
+  "email": "Sarina.Roberts73@mail.com",
   "password": "passw0rd",
   "dateOfBirth": {
-    "day": "27",
-    "month": "5",
-    "year": "1999"
+    "day": "20",
+    "month": "9",
+    "year": "1965"
   },
-  "address": "6325 Jones Plains",
-  "address2": "Town 'n' Country, Jersey",
-  "newsLetter": "false",
+  "address": "671 Yost Court",
+  "address2": "New Kendrickburgh, Papua New Guinea",
+  "newsLetter": "true",
   "specialOffers": "false",
-  "firstName": "Kendall",
-  "lastName": "Schumm",
-  "company": "Lehner - Wyman",
-  "country": "New Zealand",
-  "state": "Massachusetts",
-  "city": "Robertoburgh",
-  "zipcode": "70179",
-  "mobileNumber": "231-218-9191 x8942",
-  "cardNumber": "6588-9118-2385-9496",
-  "cvc": "507",
+  "firstName": "Sarina",
+  "lastName": "Roberts",
+  "company": "Bartoletti, O'Keefe and Harris",
+  "country": "Singapore",
+  "state": "Tennessee",
+  "city": "Mountain View",
+  "zipcode": "61595",
+  "mobileNumber": "364-877-4473 x953",
+  "cardNumber": "2644-8267-6666-1751",
+  "cvc": "415",
   "cardExpiry": {
-    "month": 9,
-    "year": 2030
+    "month": 6,
+    "year": 2047
   }
 }
