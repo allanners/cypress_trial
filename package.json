@@ -20,11 +20,10 @@
     "url": "https://github.com/allanners/cypress_trial/issues"
   },
   "homepage": "https://github.com/allanners/cypress_trial#readme",
-  "dependencies": {
-    "cypress": "^14.2.1"
-  },
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
+    "cypress": "^14.3.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-xpath": "^2.0.1",
     "mochawesome": "^7.1.3"
   }

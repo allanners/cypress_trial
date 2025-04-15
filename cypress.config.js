@@ -1,5 +1,6 @@
 // npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca
-
+const fs = require('fs');
+const path = require('path');
 const { defineConfig } = require("cypress");
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 
@@ -20,17 +21,17 @@ module.exports = defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-      
+      // implement node event listeners here
       on('before:run', async (details) => {
-              console.log('override before:run');
-              console.log('Running tests');
-              await beforeRunHook(details);
-            });
-            on('after:run', async () => {
-              console.log('override after:run');
-              await afterRunHook();
-            });
+        console.log('override before:run');
+        console.log('Running tests');
+        await beforeRunHook(details);
+      });
+      on('after:run', async () => {
+        console.log('override after:run');
+        await afterRunHook();
+      });
+
     },
   },
 });
