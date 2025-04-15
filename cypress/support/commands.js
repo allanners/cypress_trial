@@ -26,7 +26,7 @@
 
 // Add to Cart Command
 import { generateUserData } from "./fakerUtil";
-import RegistrationPage from './pages/registration.page';
+import { RegistrationPage } from './pages/registration.page';
 
 Cypress.Commands.add("addToCart", (itemName) => {
     cy.get('[data-test="inventory-item-name"]') // Selects product names
