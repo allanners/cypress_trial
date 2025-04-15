@@ -1,29 +1,29 @@
 {
-  "title": "Mrs.",
-  "name": "Kailee Sasha Adams",
-  "email": "Kailee.Adams57@mail.com",
+  "title": "Mr.",
+  "name": "Kendall Brooklyn Schumm",
+  "email": "Kendall.Schumm96@mail.com",
   "password": "passw0rd",
   "dateOfBirth": {
-    "day": "12",
-    "month": "1",
-    "year": "1956"
+    "day": "27",
+    "month": "5",
+    "year": "1999"
   },
-  "address": "532 Luigi Views",
-  "address2": "Simi Valley, Lithuania",
+  "address": "6325 Jones Plains",
+  "address2": "Town 'n' Country, Jersey",
   "newsLetter": "false",
   "specialOffers": "false",
-  "firstName": "Kailee",
-  "lastName": "Adams",
-  "company": "Von - Abbott",
-  "country": "India",
-  "state": "Connecticut",
-  "city": "Colorado Springs",
-  "zipcode": "07510",
-  "mobileNumber": "1-771-912-0194 x73300",
-  "cardNumber": "4266713936295",
-  "cvc": "755",
+  "firstName": "Kendall",
+  "lastName": "Schumm",
+  "company": "Lehner - Wyman",
+  "country": "New Zealand",
+  "state": "Massachusetts",
+  "city": "Robertoburgh",
+  "zipcode": "70179",
+  "mobileNumber": "231-218-9191 x8942",
+  "cardNumber": "6588-9118-2385-9496",
+  "cvc": "507",
   "cardExpiry": {
     "month": 9,
-    "year": 2047
+    "year": 2030
   }
 }

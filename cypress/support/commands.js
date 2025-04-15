@@ -26,6 +26,7 @@
 
 // Add to Cart Command
 import { generateUserData } from "./fakerUtil";
+import RegistrationPage from './pages/registration.page';
 
 Cypress.Commands.add("addToCart", (itemName) => {
     cy.get('[data-test="inventory-item-name"]') // Selects product names
@@ -156,7 +157,15 @@ Cypress.Commands.add('fillInitialSignUpForm', () => {
 Cypress.Commands.add('fillSignUpForm', () => {
     // Read and parse the JSON file correctly
     cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
+        cy.get('#id_gender1').should('not.be.checked');
+        cy.get('#id_gender2').should('not.be.checked');
         cy.get(userData.title === "Mr." ? '#id_gender1' : '#id_gender2').check();
+        cy.get(userData.title === "Mr." ? '#id_gender1' : '#id_gender2')
+            .should('be.checked')
+            .get(!(userData.title === "Mr.") ? '#id_gender1' : '#id_gender2')
+            .should('not.be.checked');
+        
+
         cy.get('[data-qa="password"]').should('have.value', '').type(userData.password);
         
         // Select Date of Birth
