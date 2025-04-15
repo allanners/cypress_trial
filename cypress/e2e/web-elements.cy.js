@@ -21,11 +21,11 @@ describe('Radio Button, Checkbox, Dropdown Menu', () => {
     cy.get('#radio-button2').should('not.be.checked')
     cy.get('#radio-button3').should('not.be.checked')
  });
- it('Should successfully select Philippines', () => {
-     cy.visit('https://qa-practice.netlify.app/dropdowns')
-     // //select[contains(@id, 'dropdown-menu')]
-     cy.xpath("//select[contains(@id, 'dropdown-menu')]").select('Philippines').should('be.visible')
-     //cy.get('#dropdown-menu').select('Philippines').should('be.visible').contains('Philippines')
+   it('Should successfully select Philippines', () => {
+      cy.visit('https://qa-practice.netlify.app/dropdowns')
+      // //select[contains(@id, 'dropdown-menu')]
+      cy.xpath("//select[contains(@id, 'dropdown-menu')]").select('Philippines').should('be.visible')
+      //cy.get('#dropdown-menu').select('Philippines').should('be.visible').contains('Philippines')
  });
  
  }); 

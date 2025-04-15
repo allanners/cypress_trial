@@ -1,5 +1,5 @@
 describe('Cart Persistence Test', () => {
-    it('adds item to cart and saves cart contents', () => {
+    it('Adds item to cart and saves cart contents', () => {
         cy.visit('https://www.saucedemo.com/');
         cy.authSauceDemo('standard_user', 'secret_sauce');
 
@@ -22,7 +22,7 @@ describe('Cart Persistence Test', () => {
 
             cy.authSauceDemo('standard_user', 'secret_sauce');
         });
-        it('should show the item in the cart after login', () => {
+        it('Should show the item in the cart after login', () => {
             cy.get('.shopping_cart_badge').should('contain', '1');
         });
     });
