@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "login-test": "npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca --spec 'cypress/e2e/login.cy.js' --browser chrome",
-    "automation-test": "npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca --spec 'cypress/e2e/automation-test.cy.js' --browser chrome"
+    "automation-test": "npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca --spec 'cypress/e2e/automation-test.cy.js' --browser chrome",
+    "test-all": "npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca --spec 'cypress/e2e/*' --browser chrome"
   },
   "repository": {
     "type": "git",
