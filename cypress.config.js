@@ -10,7 +10,7 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   //retries: 3,
   // testIsolation: false,
-  // reporter: 'cypress -mochawesome-reporter',
+  reporter: 'cypress -mochawesome-reporter',
   reporterOptions: {
     charts: true,
     reportPageTitle: 'custom-title',
