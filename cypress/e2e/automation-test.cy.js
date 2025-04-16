@@ -14,6 +14,7 @@ describe("Place Order Test Suite", () => {
         cy.get('header').should('be.visible'); // Checking if the header is visible
         cy.get('.logo img').should('exist'); // Selects element with class=logo; then selects img tag
         cy.get('.col-sm-6').contains('Full-Fledged practice website for Automation Engineers').should('be.visible'); // Checking for a main section
+        cy.takeScreen('test-case-14-homepage-visibility');
 
         // 4. Add products to cart
         cy.addProductToCart(4);
@@ -26,6 +27,7 @@ describe("Place Order Test Suite", () => {
 
         // 6. Verify that cart page is displayed
         cy.get('li.active').should('be.visible').and('contain', 'Shopping Cart');
+        cy.takeScreen('test-case-14-cart-page-visibility');
 
         // 7. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -47,15 +49,17 @@ describe("Place Order Test Suite", () => {
 
         // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         cy.get('[data-qa="account-created"]').should('be.visible').and('contain', 'Account Created!');
+        cy.takeScreen('test-case-14-account-created');
         cy.get('[data-qa="continue-button"]').should('not.be.disabled').and('be.visible').click();
         cy.wait(1000);
 
+
         // 11. Verify ' Logged in as username' at top
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-
             cy.get('.nav > :nth-child(10) > a').should('be.visible')
                 .and('contain', ` Logged in as ${userData.name}`);
         });
+        cy.takeScreen('test-case-14-logged-in-as-username');
 
         // 12.Click 'Cart' button
         cy.get('.shop-menu > .nav > :nth-child(3) > a')
@@ -75,6 +79,7 @@ describe("Place Order Test Suite", () => {
             cy.verifyAddress('invoice', userData);
             cy.verifyAddress('delivery', userData);
         });
+        cy.takeScreen('test-case-14-verify-address-details');
 
         // 15. Enter description in comment text area and click 'Place Order'
         cy.get('.form-control').should('be.visible').type('Test comment 123#_.!');
@@ -91,6 +96,7 @@ describe("Place Order Test Suite", () => {
         // 18. Verify success message 'Your order has been placed successfully!'
         cy.get('[data-qa="order-placed"] > b').should('be.visible').and('contain', 'Order Placed!');
         cy.url().should('contain', 'payment_done');
+        cy.takeScreen('test-case-14-order-placed-successfully');
         
         // 19. Click 'Delete Account' button
         cy.get('a[href="/delete_account"]').should('be.visible').and('contain', 'Delete Account').click();
@@ -98,6 +104,7 @@ describe("Place Order Test Suite", () => {
 
         // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         cy.get('[data-qa="account-deleted"]').should('be.visible').and('contain', 'Account Deleted!');
+        cy.takeScreen('test-case-14-account-deleted');
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
     });
@@ -111,6 +118,7 @@ describe("Place Order Test Suite", () => {
         cy.get('header').should('be.visible'); // Checking if the header is visible
         cy.get('.logo img').should('exist'); // Selects element with class=logo; then selects img tag
         cy.get('.col-sm-6').contains('Full-Fledged practice website for Automation Engineers').should('be.visible'); // Checking for a main section
+        cy.takeScreen('test-case-15-homepage-visibility');
 
         // 4. Click 'Signup / Login' button
         cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
@@ -121,6 +129,7 @@ describe("Place Order Test Suite", () => {
 
         // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         cy.get('[data-qa="account-created"]').should('be.visible').and('contain', 'Account Created!');
+        cy.takeScreen('test-case-15-account-created');
         cy.get('[data-qa="continue-button"]').should('not.be.disabled').and('be.visible').click();
         cy.wait(1000);
 
@@ -130,6 +139,7 @@ describe("Place Order Test Suite", () => {
             cy.get('.nav > :nth-child(10) > a').should('be.visible')
                 .and('contain', ` Logged in as ${userData.name}`);
         });
+        cy.takeScreen('test-case-15-logged-in-as-username');
 
         // 8. Add products to cart
         cy.addProductToCart(4);
@@ -142,6 +152,7 @@ describe("Place Order Test Suite", () => {
         
         // 10. Verify that cart page is displayed
         cy.get('li.active').should('be.visible').and('contain', 'Shopping Cart');
+        cy.takeScreen('test-case-15-cart-page-visibility');
 
         // 11. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -155,6 +166,7 @@ describe("Place Order Test Suite", () => {
             cy.verifyAddress('invoice', userData);
             cy.verifyAddress('delivery', userData);
         });
+        cy.takeScreen('test-case-15-verify-address-details');
 
         // 13. Enter description in comment text area and click 'Place Order'
         cy.get('.form-control').should('be.visible').type('Test comment 123#_.!');
@@ -171,6 +183,7 @@ describe("Place Order Test Suite", () => {
         // 16. Verify success message 'Your order has been placed successfully!'
         cy.get('[data-qa="order-placed"] > b').should('be.visible').and('contain', 'Order Placed!');
         cy.url().should('contain', 'payment_done');
+        cy.takeScreen('test-case-15-order-placed-successfully');
 
         // 17. Click 'Delete Account' button
         cy.get('a[href="/delete_account"]').should('be.visible').and('contain', 'Delete Account').click();
@@ -178,6 +191,7 @@ describe("Place Order Test Suite", () => {
 
         // 18. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         cy.get('[data-qa="account-deleted"]').should('be.visible').and('contain', 'Account Deleted!');
+        cy.takeScreen('test-case-15-account-deleted');
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
     });
@@ -199,6 +213,7 @@ describe("Place Order Test Suite", () => {
         cy.get('header').should('be.visible'); // Checking if the header is visible
         cy.get('.logo img').should('exist'); // Selects element with class=logo; then selects img tag
         cy.get('.col-sm-6').contains('Full-Fledged practice website for Automation Engineers').should('be.visible'); // Checking for a main section
+        cy.takeScreen('test-case-16-homepage-visibility');
 
         // 4. Click 'Signup / Login' button
         cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
@@ -225,6 +240,7 @@ describe("Place Order Test Suite", () => {
 
         // 9. Verify that cart page is displayed
         cy.get('li.active').should('be.visible').and('contain', 'Shopping Cart');
+        cy.takeScreen('test-case-16-cart-page-visibility');
 
         // 10. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -253,6 +269,7 @@ describe("Place Order Test Suite", () => {
         // 15. Verify success message 'Your order has been placed successfully!'
         cy.get('[data-qa="order-placed"] > b').should('be.visible').and('contain', 'Order Placed!');
         cy.url().should('contain', 'payment_done');
+        cy.takeScreen('test-case-16-order-placed-successfully');
 
         // 16. Click 'Delete Account' button
         cy.get('a[href="/delete_account"]').should('be.visible').and('contain', 'Delete Account').click();
@@ -260,6 +277,7 @@ describe("Place Order Test Suite", () => {
 
         // 17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         cy.get('[data-qa="account-deleted"]').should('be.visible').and('contain', 'Account Deleted!');
+        cy.takeScreen('test-case-14-account-deleted');
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
 

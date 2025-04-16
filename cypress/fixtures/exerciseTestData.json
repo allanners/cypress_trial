@@ -1,29 +1,29 @@
 {
-  "title": "Mr.",
-  "name": "Sarina Sasha Roberts",
-  "email": "Sarina.Roberts73@mail.com",
+  "title": "Mrs.",
+  "name": "Demarcus Riley Shanahan",
+  "email": "Demarcus.Shanahan0@mail.com",
   "password": "passw0rd",
   "dateOfBirth": {
-    "day": "20",
-    "month": "9",
-    "year": "1965"
+    "day": "30",
+    "month": "6",
+    "year": "1972"
   },
-  "address": "671 Yost Court",
-  "address2": "New Kendrickburgh, Papua New Guinea",
+  "address": "317 W Jackson Street",
+  "address2": "Lake Dannietown, Anguilla",
   "newsLetter": "true",
-  "specialOffers": "false",
-  "firstName": "Sarina",
-  "lastName": "Roberts",
-  "company": "Bartoletti, O'Keefe and Harris",
-  "country": "Singapore",
-  "state": "Tennessee",
-  "city": "Mountain View",
-  "zipcode": "61595",
-  "mobileNumber": "364-877-4473 x953",
-  "cardNumber": "2644-8267-6666-1751",
-  "cvc": "415",
+  "specialOffers": "true",
+  "firstName": "Demarcus",
+  "lastName": "Shanahan",
+  "company": "Witting LLC",
+  "country": "New Zealand",
+  "state": "Ohio",
+  "city": "New Rahulton",
+  "zipcode": "81500-0237",
+  "mobileNumber": "(532) 822-8716",
+  "cardNumber": "4575-7083-1907-7793",
+  "cvc": "085",
   "cardExpiry": {
-    "month": 6,
-    "year": 2047
+    "month": 12,
+    "year": 2035
   }
 }
