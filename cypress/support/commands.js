@@ -192,7 +192,6 @@ Cypress.Commands.add('fillSignUpForm', () => {
         cy.get('[data-qa="zipcode"]').should('have.value', '').type(userData.zipcode);
         cy.get('[data-qa="mobile_number"]').should('have.value', '').type(userData.mobileNumber);
     });
-    cy.get('[data-qa="create-account"]').should('not.be.disabled').and('be.visible').click();
 });
 
 Cypress.Commands.add('verifyAddress', (type, userData) => {

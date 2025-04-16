@@ -1,29 +1,29 @@
 {
   "title": "Mrs.",
-  "name": "Demarcus Riley Shanahan",
-  "email": "Demarcus.Shanahan0@mail.com",
+  "name": "Maia Bailey Block",
+  "email": "Maia.Block64@mail.com",
   "password": "passw0rd",
   "dateOfBirth": {
-    "day": "30",
-    "month": "6",
-    "year": "1972"
+    "day": "28",
+    "month": "12",
+    "year": "1996"
   },
-  "address": "317 W Jackson Street",
-  "address2": "Lake Dannietown, Anguilla",
+  "address": "941 W Washington Avenue",
+  "address2": "Lake Ridge, Grenada",
   "newsLetter": "true",
   "specialOffers": "true",
-  "firstName": "Demarcus",
-  "lastName": "Shanahan",
-  "company": "Witting LLC",
-  "country": "New Zealand",
-  "state": "Ohio",
-  "city": "New Rahulton",
-  "zipcode": "81500-0237",
-  "mobileNumber": "(532) 822-8716",
-  "cardNumber": "4575-7083-1907-7793",
-  "cvc": "085",
+  "firstName": "Maia",
+  "lastName": "Block",
+  "company": "Hyatt Group",
+  "country": "India",
+  "state": "Mississippi",
+  "city": "Port Jefferey",
+  "zipcode": "78600-0216",
+  "mobileNumber": "797.990.4278 x978",
+  "cardNumber": "6492-7507-8494-2080",
+  "cvc": "043",
   "cardExpiry": {
-    "month": 12,
-    "year": 2035
+    "month": 6,
+    "year": 2041
   }
 }
