@@ -1,4 +1,4 @@
-import { generateUserData } from "../support/fakerUtil";
+import { generateUserData } from "../../support/fakerUtil";
 
 describe("Place Order Test Suite", () => {
     before(() => {
@@ -6,6 +6,8 @@ describe("Place Order Test Suite", () => {
     });
 
     it("Place Order: Register While Checkout", () => {
+        const testCase = 14;
+
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
         cy.url().should('include', 'automationexercise.com');
@@ -17,7 +19,7 @@ describe("Place Order Test Suite", () => {
         cy.get('section[id="slider"]')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-14-homepage-visibility');
+            .screenshot(`test-case-${testCase}-homepage-visibility`);
 
         // 4. Add products to cart
         cy.addProductToCart(4);
@@ -25,7 +27,7 @@ describe("Place Order Test Suite", () => {
         cy.addProductToCart(6);
 
         // 5. Click 'Cart' button
-        cy.get('.shop-menu > .nav > :nth-child(3)').should('be.visible').click();
+        cy.contains('a', 'Cart').should('be.visible').click();
         cy.wait(1000);
 
         // 6. Verify that cart page is displayed
@@ -33,7 +35,7 @@ describe("Place Order Test Suite", () => {
         cy.get('#cart_items')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-14-cart-page-visibility');
+            .screenshot(`test-case-${testCase}-cart-page-visibility`);
 
         // 7. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -50,14 +52,7 @@ describe("Place Order Test Suite", () => {
         cy.wait(1000);
 
         // 9. Fill all details in Signup and create account
-        cy.fillInitialSignUpForm();
-        cy.fillSignUpForm();
-        cy.get('.login-form')
-            .scrollIntoView()
-            .should('be.visible')
-            .screenshot('test-case-14-signup-form');
-        cy.get('[data-qa="create-account"]').should('not.be.disabled').and('be.visible').click();
-        cy.wait(1000);
+        cy.fillRegistrationForms(testCase);
 
         // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         cy.get('[data-qa="account-created"]').should('be.visible').and('contain', 'Account Created!');
@@ -67,18 +62,16 @@ describe("Place Order Test Suite", () => {
 
         // 11. Verify ' Logged in as username' at top
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-            cy.get('.nav > :nth-child(10) > a').should('be.visible')
-                .and('contain', ` Logged in as ${userData.name}`)
+            cy.contains('a', ` Logged in as ${userData.name}`);
+            // cy.get('.nav > :nth-child(10) > a').should('be.visible')
+            //     .and('contain', ` Logged in as ${userData.name}`);
             cy.get('.navbar-nav')
                 .scrollIntoView()
-                .screenshot('test-case-14-logged-in-as-username');
+                .screenshot(`test-case-${testCase}-logged-in-as-username`);
         });
 
         // 12.Click 'Cart' button
-        cy.get('.shop-menu > .nav > :nth-child(3) > a')
-            .should('be.visible')
-            .and('contain', 'Cart')
-            .click();
+        cy.contains('a', 'Cart').should('be.visible').click();
         cy.wait(1000);
 
         // 13. Click 'Proceed To Checkout' button
@@ -88,19 +81,8 @@ describe("Place Order Test Suite", () => {
             .click();
         cy.wait(1000);
 
-        // 14. Verify Address Details and Review Your Order
-        cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-            cy.verifyAddress('invoice', userData);
-            cy.verifyAddress('delivery', userData);
-        });
-        cy.get('[data-qa="checkout-info"]')
-            .should('be.visible')
-            .screenshot('test-case-14-verify-address-details');
-
-        // 15. Enter description in comment text area and click 'Place Order'
-        cy.get('.form-control').should('be.visible').type('Test comment 123#_.!');
-        cy.get(':nth-child(7) > .btn').should('be.visible').and('not.be.disabled').click();
-        cy.wait(1000);
+        // 14. Verify Address Details and Review Your Order & 15. Enter description in comment text area and click 'Place Order'
+        cy.verifyCheckout(testCase);
 
         // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
@@ -108,7 +90,7 @@ describe("Place Order Test Suite", () => {
             cy.get('#cart_items > .container')
                 .should('be.visible')
                 .scrollIntoView()
-                .screenshot('test-case-14-card-details');
+                .screenshot(`test-case-${testCase}-card-details`);
         });
         
         // 17. Click 'Pay and Confirm Order' button
@@ -129,12 +111,14 @@ describe("Place Order Test Suite", () => {
             .and('contain', 'Account Deleted!')
         cy.get('.col-sm-9')
             .scrollIntoView()
-            .screenshot('test-case-14-account-deleted');
+            .screenshot(`test-case-${testCase}-account-deleted`);
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
     });
 
     it("Place Order: Register Before Checkout", () => {
+        const testCase = 15;
+
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
         cy.url().should('include', 'automationexercise.com');
@@ -146,22 +130,14 @@ describe("Place Order Test Suite", () => {
         cy.get('section[id="slider"]')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-15-homepage-visibility');
+            .screenshot(`test-case-${testCase}-homepage-visibility`);
 
         // 4. Click 'Signup / Login' button
-        cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
+        cy.contains('a', 'Signup / Login').should('be.visible').click();
         cy.wait(1000);
 
         // 5. Fill all details in Signup and create account
-        cy.fillInitialSignUpForm();
-        cy.fillSignUpForm();
-        cy.get('.login-form')
-            .scrollIntoView()
-            .should('be.visible')
-            .screenshot('test-case-15-signup-form');
-        cy.get('[data-qa="create-account"]').should('not.be.disabled').and('be.visible').click();
-        cy.wait(1000);
-
+        cy.fillRegistrationForms(testCase);
 
         // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         cy.get('[data-qa="account-created"]').should('be.visible').and('contain', 'Account Created!');
@@ -170,11 +146,12 @@ describe("Place Order Test Suite", () => {
 
         // 7. Verify ' Logged in as username' at top
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-            cy.get('.nav > :nth-child(10) > a').should('be.visible')
-                .and('contain', ` Logged in as ${userData.name}`);
+            cy.contains('a', ` Logged in as ${userData.name}`);
+            // cy.get('.nav > :nth-child(10) > a').should('be.visible')
+            //     .and('contain', ` Logged in as ${userData.name}`);
             cy.get('.navbar-nav')
                 .scrollIntoView()
-                .screenshot('test-case-15-logged-in-as-username');
+                .screenshot(`test-case-${testCase}-logged-in-as-username`);
         });
 
         // 8. Add products to cart
@@ -183,7 +160,7 @@ describe("Place Order Test Suite", () => {
         cy.addProductToCart(6);
 
         // 9. Click 'Cart' button
-        cy.get('.shop-menu > .nav > :nth-child(3)').should('be.visible').click();
+        cy.contains('a', 'Cart').should('be.visible').click();
         cy.wait(1000);
         
         // 10. Verify that cart page is displayed
@@ -191,7 +168,7 @@ describe("Place Order Test Suite", () => {
         cy.get('#cart_items')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-15-cart-page-visibility');
+            .screenshot(`test-case-${testCase}-cart-page-visibility`);
 
         // 11. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -200,19 +177,8 @@ describe("Place Order Test Suite", () => {
             .click();
         cy.wait(1000);
         
-        // 12. Verify Address Details and Review Your Order
-        cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-            cy.verifyAddress('invoice', userData);
-            cy.verifyAddress('delivery', userData);
-        });
-        cy.get('[data-qa="checkout-info"]')
-            .should('be.visible')
-            .screenshot('test-case-15-verify-address-details');
-
-        // 13. Enter description in comment text area and click 'Place Order'
-        cy.get('.form-control').should('be.visible').type('Test comment 123#_.!');
-        cy.get(':nth-child(7) > .btn').should('be.visible').and('not.be.disabled').click();
-        cy.wait(1000);
+        // 12. Verify Address Details and Review Your Order & 13. Enter description in comment text area and click 'Place Order'
+        cy.verifyCheckout(testCase);
 
         // 14. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
@@ -220,7 +186,7 @@ describe("Place Order Test Suite", () => {
             cy.get('#cart_items > .container')
                 .should('be.visible')
                 .scrollIntoView()
-                .screenshot('test-case-15-card-details');
+                .screenshot(`test-case-${testCase}-card-details`);
         });
 
         // 15. Click 'Pay and Confirm Order' button
@@ -239,23 +205,24 @@ describe("Place Order Test Suite", () => {
         cy.get('[data-qa="account-deleted"]').should('be.visible').and('contain', 'Account Deleted!');
         cy.get('.col-sm-9')
             .scrollIntoView()
-            .screenshot('test-case-15-account-deleted');
+            .screenshot(`test-case-${testCase}-account-deleted`);
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
     });
 
     it("Place Order: Login Before Checkout", () => {
+        const testCase = 16;
+
         // Prerequesite - Create an account
         cy.visit('http://automationexercise.com');
         cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
         cy.wait(1000);
-        cy.fillInitialSignUpForm();
-        cy.fillSignUpForm();
-        cy.get('[data-qa="create-account"]').should('not.be.disabled').and('be.visible').click();
-        cy.wait(1000);
+        // Create account
+        cy.fillRegistrationForms(testCase);
         cy.get('[data-qa="continue-button"]').should('contain', 'Continue').click();
         cy.wait(1000);
-        cy.get('.shop-menu > .nav > :nth-child(4) > a').should('contain', 'Logout').click();
+        cy.contains('a', 'Logout').should('be.visible').click();
+        // cy.get('.shop-menu > .nav > :nth-child(4) > a').should('contain', 'Logout').click();
 
         // 2. Navigate to url 'http://automationexercise.com'
         cy.visit('http://automationexercise.com');
@@ -268,10 +235,10 @@ describe("Place Order Test Suite", () => {
         cy.get('section[id="slider"]')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-16-homepage-visibility');
+            .screenshot(`test-case-${testCase}-homepage-visibility`);
 
         // 4. Click 'Signup / Login' button
-        cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
+        cy.contains('a', 'Signup / Login').should('be.visible').click();
         cy.wait(1000);
 
         // 5. Fill email, password and click 'Login' button
@@ -292,7 +259,7 @@ describe("Place Order Test Suite", () => {
         cy.addProductToCart(6);
 
         // 8. Click 'Cart' button
-        cy.get('.shop-menu > .nav > :nth-child(3)').should('be.visible').click();
+        cy.contains('a', 'Cart').should('be.visible').click();
         cy.wait(1000);
 
         // 9. Verify that cart page is displayed
@@ -300,7 +267,7 @@ describe("Place Order Test Suite", () => {
         cy.get('#cart_items')
             .scrollIntoView()
             .should('be.visible')
-            .screenshot('test-case-16-cart-page-visibility');
+            .screenshot(`test-case-${testCase}-cart-page-visibility`);
 
         // 10. Click Proceed To Checkout
         cy.get('a.btn.btn-default.check_out')
@@ -309,19 +276,8 @@ describe("Place Order Test Suite", () => {
             .click();
         cy.wait(1000);
 
-        // 11. Verify Address Details and Review Your Order
-        cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-            cy.verifyAddress('invoice', userData);
-            cy.verifyAddress('delivery', userData);
-        });
-        cy.get('[data-qa="checkout-info"]')
-            .should('be.visible')
-            .screenshot('test-case-16-verify-address-details');
-
-        // 12. Enter description in comment text area and click 'Place Order'
-        cy.get('.form-control').should('be.visible').type('Test comment 123#_.!');
-        cy.get(':nth-child(7) > .btn').should('be.visible').and('not.be.disabled').click();
-        cy.wait(1000);
+        // 11. Verify Address Details and Review Your Order & 12. Enter description in comment text area and click 'Place Order'
+        cy.verifyCheckout(testCase);
         
         // 13. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
@@ -329,7 +285,7 @@ describe("Place Order Test Suite", () => {
             cy.get('#cart_items > .container')
                 .should('be.visible')
                 .scrollIntoView()
-                .screenshot('test-case-16-card-details');
+                .screenshot(`test-case-${testCase}-card-details`);
         });
 
         // 14. Click 'Pay and Confirm Order' button
@@ -350,7 +306,7 @@ describe("Place Order Test Suite", () => {
             .and('contain', 'Account Deleted!');
         cy.get('.col-sm-9')
             .scrollIntoView()
-            .screenshot('test-case-16-account-deleted');
+            .screenshot(`test-case-${testCase}-account-deleted`);
         cy.get('[data-qa="continue-button"]').should('be.visible').and('not.be.disabled').click();
         cy.wait(1000);
     });

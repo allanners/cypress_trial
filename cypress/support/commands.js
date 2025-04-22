@@ -26,7 +26,9 @@
 
 // Add to Cart Command
 import { generateUserData } from "./fakerUtil";
-import { RegistrationPage } from './pages/registration.page';
+import  RegistrationPage  from './pages/registration.page';
+import ATRegistrationPage from './pages/at-registration.page';
+import ATCheckoutPage from "./pages/at-checkout.page";
 
 Cypress.Commands.add("addToCart", (itemName) => {
     cy.get('[data-test="inventory-item-name"]') // Selects product names
@@ -69,34 +71,14 @@ Cypress.Commands.add("authSauceDemo", (username, password) => {
     cy.get('[data-test="login-button"]').click();
 });
 
-Cypress.Commands.add("verifyRegistrationLabels", () => {
-    cy.get(':nth-child(1) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(2) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(3) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(4) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(5) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(6) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(7) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(8) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(10) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(11) > [align="right"] > b').should('be.visible');
-    cy.get(':nth-child(12) > [align="right"] > b').should('be.visible');
-    cy.get('input[type="submit"][value="Register"]').should('be.visible').should('not.be.disabled');
-});
-
-Cypress.Commands.add("inputRegistrationFields", (user) => {
-    cy.get('input[id="customer.firstName"]').should('have.value', '').type(user.firstName);
-    cy.get('input[id="customer.lastName"]').should('have.value', '').type(user.lastName);
-    cy.get('input[id="customer.address.street"]').should('have.value', '').type(user.addressStreet);
-    cy.get('input[id="customer.address.city"]').should('have.value', '').type(user.addressCity);
-    cy.get('input[id="customer.address.state"]').should('have.value', '').type(user.addressState);
-    cy.get('input[id="customer.address.zipCode"]').should('have.value', '').type(user.addressZipCode);
-    cy.get('input[id="customer.phoneNumber"]').should('have.value', '').type(user.phoneNumber);
-    cy.get('input[id="customer.ssn"]').should('have.value', '').type(user.ssn);
-    cy.get('input[id="customer.username"]').should('have.value', '').type(user.username);
-    cy.get('input[id="customer.password"]').should('have.value', '').type(user.password);
-    cy.get('input[id="repeatedPassword"]').should('have.value', '').type(user.password);
-});
+// Parabank commands
+Cypress.Commands.add('fillRegistrationForm', (customerData) => {
+    RegistrationPage.verifyRegistrationLabels();
+    RegistrationPage.fillSignUpForm(customerData);
+    RegistrationPage.submitSignUpForm();
+    cy.wait(1000);
+    RegistrationPage.verifySignUpSuccess(customerData.username);
+  });
 
 Cypress.Commands.add("writeDataToFile", (user) => {
     cy.writeFile('cypress/fixtures/fakerData.json', user);
@@ -145,69 +127,23 @@ Cypress.Commands.add('generateUserData', () => {
     
 });
 
-Cypress.Commands.add('fillInitialSignUpForm', () => {
-    // Read and parse the JSON file correctly
+// Automation exercise commands
+Cypress.Commands.add('fillRegistrationForms', (testCase) => {
     cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-        cy.get('[data-qa="signup-name"]').should('have.value', '').type(userData.name);
-        cy.get('[data-qa="signup-email"]').should('have.value', '').type(userData.email);
-    });
-    cy.get('[data-qa="signup-button"]').should('not.be.disabled').and('be.visible').click();
-});
-
-Cypress.Commands.add('fillSignUpForm', () => {
-    // Read and parse the JSON file correctly
-    cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
-        cy.get('#id_gender1').should('not.be.checked');
-        cy.get('#id_gender2').should('not.be.checked');
-        cy.get(userData.title === "Mr." ? '#id_gender1' : '#id_gender2').check();
-        cy.get(userData.title === "Mr." ? '#id_gender1' : '#id_gender2')
-            .should('be.checked')
-            .get(!(userData.title === "Mr.") ? '#id_gender1' : '#id_gender2')
-            .should('not.be.checked');
-        
-
-        cy.get('[data-qa="password"]').should('have.value', '').type(userData.password);
-        
-        // Select Date of Birth
-        cy.get('select[data-qa="days"] option:selected').should('have.text', 'Day');
-        cy.get('[data-qa="days"]').select(userData.dateOfBirth.day)
-            .should('have.value', userData.dateOfBirth.day);
-
-        cy.get('select[data-qa="months"] option:selected').should('have.text', 'Month');
-        cy.get('[data-qa="months"]').select(userData.dateOfBirth.month)
-            .should('have.value', userData.dateOfBirth.month);
-
-        cy.get('select[data-qa="years"] option:selected').should('have.text', 'Year');
-        cy.get('[data-qa="years"]').select(userData.dateOfBirth.year)
-            .should('have.value', userData.dateOfBirth.year);
-
-        cy.get('[data-qa="first_name"]').should('have.value', '').type(userData.firstName);
-        cy.get('[data-qa="last_name"]').should('have.value', '').type(userData.lastName);
-        cy.get('[data-qa="company"]').should('have.value', '').type(userData.company);
-        cy.get('[data-qa="address"]').should('have.value', '').type(userData.address);
-        cy.get('[data-qa="address2"]').should('have.value', '').type(userData.address2);
-        cy.get('[data-qa="country"]').select(userData.country);
-        cy.get('[data-qa="state"]').should('have.value', '').type(userData.state);
-        cy.get('[data-qa="city"]').should('have.value', '').type(userData.city);
-        cy.get('[data-qa="zipcode"]').should('have.value', '').type(userData.zipcode);
-        cy.get('[data-qa="mobile_number"]').should('have.value', '').type(userData.mobileNumber);
+        ATRegistrationPage.fillInitialSignUpForm(userData);
+        cy.wait(1000);
+        ATRegistrationPage.fillSignUpForm(userData, testCase);
     });
 });
 
-Cypress.Commands.add('verifyAddress', (type, userData) => {
-    cy.get(`#address_${type} > .address_firstname`)
-        .should('contain', `${userData.title} ${userData.firstName} ${userData.lastName}`);
-    cy.get(`#address_${type} > :nth-child(3)`).should('contain', userData.company);
-    cy.get(`#address_${type} > :nth-child(4)`).should('contain', userData.address);
-    cy.get(`#address_${type} > :nth-child(5)`).should('contain', userData.address2);
-
-    cy.get(`#address_${type} > .address_city`).should('contain', userData.city);
-    cy.get(`#address_${type} > .address_state_name`).should('contain', userData.state);
-    cy.get(`#address_${type} > .address_postcode`).should('contain', userData.zipcode);
-
-    cy.get(`#address_${type} > .address_country_name`).should('contain', userData.country);
-    cy.get(`#address_${type} > .address_phone`).should('contain', userData.mobileNumber);
-});
+Cypress.Commands.add('verifyCheckout', (testCase) => {
+    cy.readFile('cypress/fixtures/exerciseTestData.json').then((userData) => {
+        ATCheckoutPage.verifyAddress('invoice', userData);
+        ATCheckoutPage.verifyAddress('delivery', userData);
+    });
+    ATCheckoutPage.captureAddressDetails(testCase);
+    ATCheckoutPage.enterDescription();
+})
 
 Cypress.Commands.add('enterCardDetails', (userData) => {
     cy.get('[data-qa="name-on-card"]').should('have.value', '').type(userData.name);
