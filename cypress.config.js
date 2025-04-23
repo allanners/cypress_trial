@@ -1,15 +1,17 @@
 // npx cypress run --record --key 22e972df-2261-4a3d-a8cc-8feb1c4531ca
 const fs = require('fs');
 const path = require('path');
+const dotenv = require("dotenv");
 const { defineConfig } = require("cypress");
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
+
 
 module.exports = defineConfig({
   projectId: "7h4a3j",
   experimentalStudio: true,
-  viewportWidth: 1920,
-  viewportHeight: 1080,
-  //retries: 3,
+  // viewportWidth: 1920,
+  // viewportHeight: 1080,
+  retries: 4,
   // testIsolation: false,
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
@@ -19,7 +21,14 @@ module.exports = defineConfig({
     inlineAssets: true,
     saveAllAttempts: false,
   },
+  env: {
+    projectName: process.env.PROJECT_NAME || "Cypress Test Automation",
+    environment: process.env.ENVIRONMENT || "QA",
+    API_KEY: process.env.API_KEY,
+    API_BASE_URL: process.env.API_BASE_URL || 'https://petstore.swagger.io/v2',
+  },
   e2e: {
+    baseUrl: process.env.API_BASE_URL || 'https://petstore.swagger.io/v2',
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on('before:run', async (details) => {
