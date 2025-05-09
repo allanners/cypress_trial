@@ -9,7 +9,7 @@ describe("Place Order Test Suite", () => {
         const testCase = 14;
 
         // 2. Navigate to url 'http://automationexercise.com'
-        cy.visit('http://automationexercise.com');
+        cy.visit('');
         cy.url().should('include', 'automationexercise.com');
 
         // 3. Verify that home page is visible successfully
@@ -120,7 +120,7 @@ describe("Place Order Test Suite", () => {
         const testCase = 15;
 
         // 2. Navigate to url 'http://automationexercise.com'
-        cy.visit('http://automationexercise.com');
+        cy.visit('');
         cy.url().should('include', 'automationexercise.com');
 
         // 3. Verify that home page is visible successfully
@@ -214,7 +214,7 @@ describe("Place Order Test Suite", () => {
         const testCase = 16;
 
         // Prerequesite - Create an account
-        cy.visit('http://automationexercise.com');
+        cy.visit('');
         cy.get('a[href="/login"]').should('contain', 'Signup / Login').click();
         cy.wait(1000);
         // Create account
@@ -225,7 +225,7 @@ describe("Place Order Test Suite", () => {
         // cy.get('.shop-menu > .nav > :nth-child(4) > a').should('contain', 'Logout').click();
 
         // 2. Navigate to url 'http://automationexercise.com'
-        cy.visit('http://automationexercise.com');
+        cy.visit('');
         cy.url().should('include', 'automationexercise.com');
 
         // 3. Verify that home page is visible successfully

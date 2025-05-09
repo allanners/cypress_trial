@@ -30,6 +30,17 @@ import  RegistrationPage  from './pages/registration.page';
 import ATRegistrationPage from './pages/at-registration.page';
 import ATCheckoutPage from "./pages/at-checkout.page";
 
+Cypress.Commands.add("expandRows", () => {
+    // Expand all rows before verifying data
+    cy.get('table#example tbody tr').each(($row) => {
+        cy.wrap($row).find('td.dtr-control').then(($control) => {
+            if ($control.is(':visible')) {
+                cy.wrap($control).click(); // Click to expand the row if needed
+            }
+        });
+    });
+});
+
 Cypress.Commands.add("addToCart", (itemName) => {
     cy.get('[data-test="inventory-item-name"]') // Selects product names
     .contains(itemName) // Finds the correct item by name

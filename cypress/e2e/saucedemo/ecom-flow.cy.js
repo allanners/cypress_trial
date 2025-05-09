@@ -1,6 +1,6 @@
 describe('E-commerce Workflow Suite.', () => {
   beforeEach(() => {
-    cy.visit("https://www.saucedemo.com/",  {timeout: 240000});
+    cy.visit("",  {timeout: 240000});
     cy.authSauceDemo('standard_user', 'secret_sauce');
   });
 

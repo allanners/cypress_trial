@@ -1,6 +1,6 @@
 describe('Cart Persistence Test', () => {
     it('Adds item to cart and saves cart contents', () => {
-        cy.visit('https://www.saucedemo.com/');
+        cy.visit('');
         cy.authSauceDemo('standard_user', 'secret_sauce');
 
         // Add item to cart
@@ -15,7 +15,7 @@ describe('Cart Persistence Test', () => {
 
     describe('Verify cart item persists after restoring cart and login', () => {
         beforeEach(() => {
-            cy.visit('https://www.saucedemo.com/');
+            cy.visit('');
 
             // Restore cart contents before auth
             cy.restoreCart();

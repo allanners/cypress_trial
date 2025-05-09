@@ -4,7 +4,7 @@ import { generateCustomerData } from '../../support/fakerUtil';
 describe("Parabank Registration with Fixtures", () => {
 
     beforeEach(() => {
-        cy.visit('https://parabank.parasoft.com/parabank/index.htm');
+        cy.visit('index.htm');
     });
 
     it("Should Successfully Register a Customer", () => {

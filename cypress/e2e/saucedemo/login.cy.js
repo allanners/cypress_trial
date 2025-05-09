@@ -1,6 +1,6 @@
 describe('Login Test Suite.', () => {
   beforeEach(() => {
-    cy.visit('https://www.saucedemo.com/') 
+    cy.visit('') 
   })
 
   it('Verify if user successfully logins with valid existing credentials', () => {
