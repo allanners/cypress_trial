@@ -109,39 +109,6 @@ describe('Search Bar Functionality - Testing Job Results', () => {
         cy.get('select.dt-input').should('not.be.disabled').and('be.visible').select('100');
     });
 
-    // const jobResults = [
-    //     { job: "Software Engineer", results: 6 },
-    //     { job: "Accountant", results: 2 },
-    //     { job: "Chief Executive Officer (CEO)", results: 1 },
-    //     { job: "Integration Specialist", results: 3 },
-    //     { job: "Sales Assistant", results: 3 },
-    //     { job: "Senior Javascript Developer", results: 1 },
-    //     { job: "Chief Financial Officer (CFO)", results: 1 },
-    //     { job: "Data Coordinator", results: 1 },
-    //     { job: "Developer", results: 8 },
-    //     { job: "Development Lead", results: 1 },
-    //     { job: "Director", results: 6 },
-    //     { job: "Junior Technical Author", results: 1 },
-    //     { job: "Pre-Sales Support", results: 1 },
-    //     { job: "Regional Director", results: 5 },
-    //     { job: "Javascript Developer", results: 4 },
-    //     { job: "Personnel Lead", results: 1 },
-    //     { job: "Customer Support", results: 1 },
-    //     { job: "Systems Administrator", results: 2 },
-    //     { job: "Senior Marketing Designer", results: 1 },
-    //     { job: "Sales Assistant", results: 3 },
-    //     { job: "Secretary", results: 1 },
-    //     { job: "Office Manager", results: 3 },
-    //     { job: "Development Lead", results: 1 },
-    //     { job: "Technical Author", results: 2 },
-    //     { job: "Support Lead", results: 1 },
-    //     { job: "Regional Marketing", results: 1 },
-    //     { job: "Support Engineer", results: 3 },
-    //     { job: "Marketing Designer", results: 3 },
-    //     { job: "Financial Controller", results: 1 },
-    //     { job: "Chief Marketing Officer (CMO)", results: 1 },
-    // ];
-
     const jobList = [
         "Software Engineer",
         "Accountant",
