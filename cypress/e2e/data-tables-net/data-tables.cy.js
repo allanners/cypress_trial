@@ -251,3 +251,45 @@ describe('Boundary Value Analysis (BVA) - Data Table Test Suite', () => {
         cy.get('table#example tbody tr').should('have.length', 57); // Edge case handling
     });
 });
+
+describe('Verify Sorting Functionality for Names', () => {
+    beforeEach(() => {
+        cy.visit('');
+    });
+
+    it('Verify names sorted in ascending order', () => {
+        cy.get('table#example tbody tr').then(($rows) => {
+            let tableNames = [];
+    
+            // Extract all names while trimming extra spaces
+            $rows.each((index, row) => {
+                const name = Cypress.$(row).find('td').eq(0).text().trim(); // Trim to avoid spacing issues
+                tableNames.push(name);
+            });
+    
+            const sortedNames = [...tableNames].sort(); // Create a sorted copy of names
+    
+            // Compare original order vs sorted order
+            expect(tableNames).to.deep.equal(sortedNames);
+        });
+    });
+
+    it('Verify names sorted in descending order', () => {
+        cy.get('th').contains('Name').click(); // Click twice to sort descending
+    
+        cy.get('table#example tbody tr').then(($rows) => {
+            let tableNames = [];
+    
+            // Extract all names while trimming extra spaces
+            $rows.each((index, row) => {
+                const name = Cypress.$(row).find('td').eq(0).text().trim();
+                tableNames.push(name);
+            });
+    
+            const sortedNames = [...tableNames].sort().reverse(); // Reverse sorted order
+    
+            // Compare original order vs reversed sorted order
+            expect(tableNames).to.deep.equal(sortedNames);
+        });
+    });
+});
